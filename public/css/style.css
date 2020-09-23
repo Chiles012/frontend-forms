@@ -81,7 +81,7 @@ form#add input, form#add select {
   justify-content: space-between;
 
 }
-.botones button {
+.botones button{
   width: 45%;
   padding: 20px;
 
@@ -101,7 +101,7 @@ form#add input, form#add select {
 
 }
 .edit {
-  background-color: #f2784b;
+  background-color: #3498db;
   color: #dbdbdb;
   border: none;
   transition: all .3s ease-in-out;
@@ -114,7 +114,7 @@ form#add input, form#add select {
 }
 .edit:hover {
   background-color: #dbdbdb;
-  color: #f2784b;
+  color: #3498db;
 
 }
 
@@ -164,6 +164,15 @@ form#add input, form#add select {
 }
 .usuario span {
   font-weight: bold;
+
+}
+.datos {
+  width: 300px;
+
+}
+.datos p {
+  display: flex;
+  justify-content: space-between;
 
 }
 .delete {
