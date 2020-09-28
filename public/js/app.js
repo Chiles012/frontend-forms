@@ -70,43 +70,58 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
 
-        fetch( url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+        if ( document.querySelector('#nombre').value === '' || 
+            document.querySelector('#apellido-p').value === '' || 
+            document.querySelector('#apellido-m').value === '' || 
+            document.querySelector('#curp').value === '' || 
+            document.querySelector('#estado-civil').value === '') {
+                Swal.fire({
+                    title: 'Todos los campos son obligatorios',
+                    icon: 'error'
 
-            }, 
-            body: JSON.stringify(datos)
+                })
 
-        }).then( response => {
-            return response.json();
+        } else {
 
-        }).then( data => {
-            if ( data.error ) {
+            fetch( url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+        
+                }, 
+                body: JSON.stringify(datos)
+        
+            }).then( response => {
+                return response.json();
+        
+            }).then( data => {
+                if ( data.error ) {
+                    Swal.fire( {
+                        title: data.error,
+                        icon: 'info'
+            
+                    });
+        
+                    return;
+        
+                }
+        
                 Swal.fire( {
-                    title: data.error,
-                    icon: 'info'
-    
+                    title: 'Se Agrego Correctamente',
+                    icon: 'success'
+        
                 });
-
-                return;
-
-            }
-
-            Swal.fire( {
-                title: 'Se Agrego Correctamente',
-                icon: 'success'
-
+        
+                generar();
+        
+                formFormat();
+        
+            }).catch( err => {
+                    console.log(err);
+        
             });
 
-            generar();
-
-            formFormat();
-
-        }).catch( err => {
-            console.log(err);
-
-        });
+        }
 
     });
 
